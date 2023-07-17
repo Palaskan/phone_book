@@ -3,9 +3,19 @@
 one:
   first_name: MyString
   last_name: MyString
-  phone_number: MyString
+  phone_number: 985655533
 
 two:
   first_name: MyString
   last_name: MyString
-  phone_number: MyString
+  phone_number: asdfasdfs
+
+three:
+  first_name: MyString
+  last_name: MyString
+  phone_number: 12345678910
+
+four:
+  first_name: MyString
+  last_name: MyString
+  phone_number: -987455541
