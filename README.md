@@ -10,6 +10,11 @@ Cada contacto consta de un nombre, apellido y número de teléfono.
 - Rails 7.0 o superior
 - SQLite3
 
+Si no se dispone de ello, sería necesario descargar Ruby desde `https://rubyinstaller.org/`.
+Luego se instalaría rails con `gem install rails`.
+SQLite3 es la que viene por defecto con Rails a partir de la versión 5.2, así que no sería necesario instalarlo por separado.
+
+
 ## Configuración
 
 Sigue estos pasos para configurar la aplicación en tu entorno local:
@@ -17,6 +22,8 @@ Sigue estos pasos para configurar la aplicación en tu entorno local:
 1. Clona este repositorio a tu entorno local.
 
 - `git clone https://github.com/Palaskan/phone_book.git`
+
+Si no estuviera instalado git, sería necesario descargarlo desde el sitio oficial de Git en `https://git-scm.com/downloads.`
 
 2. Navega al directorio de la aplicación.
 
