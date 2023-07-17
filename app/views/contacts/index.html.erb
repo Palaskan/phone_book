@@ -1,0 +1,25 @@
+<p style="color: green"><%= notice %></p>
+<h1 class="c-h1-contacts"><span class="fa-solid fa-address-book"></span> Phone Book App</h1>
+<div class="container">
+  <div class="c-contacts-header">
+    <h2>Contacts</h2>
+    <%= link_to "+ Add Contact", new_contact_path, class: "btn btn-primary" %>
+  </div>
+
+  <div class="c-search-contacts">
+    <%= form_with(url: contacts_path, method: :get, id: 'search-form', remote: true) do |form| %>
+      <div class="search-box">
+        <%= form.text_field :search, placeholder: 'Search for contact by last name...', id: 'search-input' %>
+        <span class="fa fa-search search-icon"></span>
+      </div>
+    <% end %>
+  </div>
+
+
+  <div id="contacts">
+    <% @contacts.each do |contact| %>
+      <%= render contact %>
+    <% end %>
+  </div>
+</div>
+

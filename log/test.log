@@ -1,0 +1,1061 @@
+  [1m[35m (8.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateContacts (20230716141018)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "contacts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar, "last_name" varchar, "phone_number" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230716141018"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2023-07-16 19:46:22.342228"], ["updated_at", "2023-07-16 19:46:22.342228"]]
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (1.2ms)[0m  [1m[31mDELETE FROM "contacts";
+INSERT INTO "contacts" ("id", "first_name", "last_name", "phone_number", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', '2023-07-16 19:46:41.849337', '2023-07-16 19:46:41.849337');
+INSERT INTO "contacts" ("id", "first_name", "last_name", "phone_number", "created_at", "updated_at") VALUES (298486374, 'MyString', 'MyString', 'MyString', '2023-07-16 19:46:41.849337', '2023-07-16 19:46:41.849337')[0m
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_key_check[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+ContactsControllerTest: test_should_update_contact
+--------------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started PATCH "/contacts/980190962" for 127.0.0.1 at 2023-07-16 21:46:42 +0200
+Processing by ContactsController#update as HTML
+  Parameters: {"contact"=>{"first_name"=>"MyString", "last_name"=>"MyString", "phone_number"=>"MyString"}, "id"=>"980190962"}
+  [1m[36mContact Load (0.1ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Redirected to http://www.example.com/contacts
+Completed 302 Found in 15ms (ActiveRecord: 0.1ms | Allocations: 2819)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+ContactsControllerTest: test_should_show_contact
+------------------------------------------------
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/contacts/980190962" for 127.0.0.1 at 2023-07-16 21:46:42 +0200
+Processing by ContactsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mContact Load (0.1ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering contacts/show.html.erb within layouts/application
+  Rendered contacts/_contact_show.html.erb (Duration: 1.2ms | Allocations: 820)
+  Rendered contacts/show.html.erb within layouts/application (Duration: 5.9ms | Allocations: 1396)
+  Rendered layout layouts/application.html.erb (Duration: 1372.3ms | Allocations: 94891)
+Completed 500 Internal Server Error in 1408ms (ActiveRecord: 0.1ms | Allocations: 98053)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+ContactsControllerTest: test_should_create_contact
+--------------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mContact Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+Started POST "/contacts" for 127.0.0.1 at 2023-07-16 21:46:43 +0200
+Processing by ContactsController#create as HTML
+  Parameters: {"contact"=>{"first_name"=>"MyString", "last_name"=>"MyString", "phone_number"=>"MyString"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mContact Create (1.1ms)[0m  [1m[32mINSERT INTO "contacts" ("first_name", "last_name", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["first_name", "MyString"], ["last_name", "MyString"], ["phone_number", "MyString"], ["created_at", "2023-07-16 19:46:43.843030"], ["updated_at", "2023-07-16 19:46:43.843030"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/contacts
+Completed 302 Found in 5ms (ActiveRecord: 1.3ms | Allocations: 885)
+  [1m[36mContact Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+  [1m[36mContact Load (0.1ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" ORDER BY "contacts"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------
+ContactsControllerTest: test_should_destroy_contact
+---------------------------------------------------
+  [1m[36mContact Load (0.4ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mContact Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+Started DELETE "/contacts/980190962" for 127.0.0.1 at 2023-07-16 21:46:43 +0200
+Processing by ContactsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mContact Load (0.0ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mContact Destroy (0.8ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = ?[0m  [["id", 980190962]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/contacts
+Completed 302 Found in 3ms (ActiveRecord: 1.0ms | Allocations: 621)
+  [1m[36mContact Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------
+ContactsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mContact Load (0.1ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/contacts" for 127.0.0.1 at 2023-07-16 21:46:43 +0200
+Processing by ContactsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contacts/index.html.erb within layouts/application
+  [1m[36mContact Load (0.1ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  Rendered contacts/_contact.html.erb (Duration: 1.2ms | Allocations: 431)
+  Rendered contacts/_contact.html.erb (Duration: 0.2ms | Allocations: 150)
+  Rendered contacts/index.html.erb within layouts/application (Duration: 26.3ms | Allocations: 1922)
+  Rendered layout layouts/application.html.erb (Duration: 124.5ms | Allocations: 30486)
+Completed 200 OK in 127ms (Views: 125.0ms | ActiveRecord: 0.1ms | Allocations: 30902)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+ContactsControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/contacts/new" for 127.0.0.1 at 2023-07-16 21:46:44 +0200
+Processing by ContactsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contacts/new.html.erb within layouts/application
+  Rendered contacts/_form.html.erb (Duration: 6.9ms | Allocations: 2014)
+  Rendered contacts/new.html.erb within layouts/application (Duration: 23.6ms | Allocations: 2341)
+  Rendered layout layouts/application.html.erb (Duration: 25.6ms | Allocations: 3855)
+Completed 200 OK in 28ms (Views: 26.0ms | ActiveRecord: 0.0ms | Allocations: 4150)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------
+ContactsControllerTest: test_should_get_edit
+--------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/contacts/980190962/edit" for 127.0.0.1 at 2023-07-16 21:46:44 +0200
+Processing by ContactsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mContact Load (0.1ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering contacts/edit.html.erb within layouts/application
+  Rendered contacts/_form.html.erb (Duration: 1.2ms | Allocations: 1013)
+  Rendered contacts/edit.html.erb within layouts/application (Duration: 24.4ms | Allocations: 1332)
+  Rendered layout layouts/application.html.erb (Duration: 26.3ms | Allocations: 2838)
+Completed 200 OK in 30ms (Views: 27.1ms | ActiveRecord: 0.1ms | Allocations: 3225)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (1.0ms)[0m  [1m[31mDELETE FROM "contacts";
+INSERT INTO "contacts" ("id", "first_name", "last_name", "phone_number", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', '2023-07-16 19:48:29.641625', '2023-07-16 19:48:29.641625');
+INSERT INTO "contacts" ("id", "first_name", "last_name", "phone_number", "created_at", "updated_at") VALUES (298486374, 'MyString', 'MyString', 'MyString', '2023-07-16 19:48:29.641625', '2023-07-16 19:48:29.641625')[0m
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_key_check[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------
+ContactsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/contacts" for 127.0.0.1 at 2023-07-16 21:48:29 +0200
+Processing by ContactsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contacts/index.html.erb within layouts/application
+  [1m[36mContact Load (0.5ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  Rendered contacts/_contact.html.erb (Duration: 1.1ms | Allocations: 512)
+  Rendered contacts/_contact.html.erb (Duration: 0.1ms | Allocations: 150)
+  Rendered contacts/index.html.erb within layouts/application (Duration: 13.9ms | Allocations: 2578)
+  Rendered layout layouts/application.html.erb (Duration: 110.4ms | Allocations: 38579)
+Completed 200 OK in 149ms (Views: 122.2ms | ActiveRecord: 0.5ms | Allocations: 43149)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+ContactsControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/contacts/new" for 127.0.0.1 at 2023-07-16 21:48:30 +0200
+Processing by ContactsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contacts/new.html.erb within layouts/application
+  Rendered contacts/_form.html.erb (Duration: 7.3ms | Allocations: 2040)
+  Rendered contacts/new.html.erb within layouts/application (Duration: 10.3ms | Allocations: 2375)
+  Rendered layout layouts/application.html.erb (Duration: 11.9ms | Allocations: 3893)
+Completed 200 OK in 14ms (Views: 12.4ms | ActiveRecord: 0.0ms | Allocations: 4218)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+ContactsControllerTest: test_should_update_contact
+--------------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started PATCH "/contacts/980190962" for 127.0.0.1 at 2023-07-16 21:48:30 +0200
+Processing by ContactsController#update as HTML
+  Parameters: {"contact"=>{"first_name"=>"MyString", "last_name"=>"MyString", "phone_number"=>"MyString"}, "id"=>"980190962"}
+  [1m[36mContact Load (0.0ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Redirected to http://www.example.com/contacts
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms | Allocations: 1173)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+ContactsControllerTest: test_should_create_contact
+--------------------------------------------------
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mContact Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+Started POST "/contacts" for 127.0.0.1 at 2023-07-16 21:48:30 +0200
+Processing by ContactsController#create as HTML
+  Parameters: {"contact"=>{"first_name"=>"MyString", "last_name"=>"MyString", "phone_number"=>"MyString"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mContact Create (0.9ms)[0m  [1m[32mINSERT INTO "contacts" ("first_name", "last_name", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["first_name", "MyString"], ["last_name", "MyString"], ["phone_number", "MyString"], ["created_at", "2023-07-16 19:48:30.171595"], ["updated_at", "2023-07-16 19:48:30.171595"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/contacts
+Completed 302 Found in 4ms (ActiveRecord: 1.0ms | Allocations: 871)
+  [1m[36mContact Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------
+ContactsControllerTest: test_should_get_edit
+--------------------------------------------
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/contacts/980190962/edit" for 127.0.0.1 at 2023-07-16 21:48:30 +0200
+Processing by ContactsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mContact Load (0.0ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering contacts/edit.html.erb within layouts/application
+  Rendered contacts/_form.html.erb (Duration: 1.2ms | Allocations: 1018)
+  Rendered contacts/edit.html.erb within layouts/application (Duration: 2.4ms | Allocations: 1352)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | Allocations: 2858)
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.0ms | Allocations: 3247)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------
+ContactsControllerTest: test_should_destroy_contact
+---------------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mContact Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+Started DELETE "/contacts/980190962" for 127.0.0.1 at 2023-07-16 21:48:30 +0200
+Processing by ContactsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mContact Load (0.0ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mContact Destroy (0.7ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = ?[0m  [["id", 980190962]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/contacts
+Completed 302 Found in 2ms (ActiveRecord: 0.9ms | Allocations: 621)
+  [1m[36mContact Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+ContactsControllerTest: test_should_show_contact
+------------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/contacts/980190962" for 127.0.0.1 at 2023-07-16 21:48:30 +0200
+Processing by ContactsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mContact Load (0.1ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering contacts/show.html.erb within layouts/application
+  Rendered contacts/_contact_show.html.erb (Duration: 1.1ms | Allocations: 648)
+  Rendered contacts/show.html.erb within layouts/application (Duration: 3.0ms | Allocations: 962)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | Allocations: 2403)
+Completed 200 OK in 8ms (Views: 5.4ms | ActiveRecord: 0.1ms | Allocations: 2815)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (1.4ms)[0m  [1m[31mDELETE FROM "contacts";
+INSERT INTO "contacts" ("id", "first_name", "last_name", "phone_number", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', '2023-07-16 19:51:04.431089', '2023-07-16 19:51:04.431089');
+INSERT INTO "contacts" ("id", "first_name", "last_name", "phone_number", "created_at", "updated_at") VALUES (298486374, 'MyString', 'MyString', 'MyString', '2023-07-16 19:51:04.431089', '2023-07-16 19:51:04.431089')[0m
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_key_check[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+ContactsControllerTest: test_should_create_contact
+--------------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mContact Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+Started POST "/contacts" for 127.0.0.1 at 2023-07-16 21:51:04 +0200
+ContactsControllerTest - test_should_create_contact: NoMethodError raised.
+If you expected this exception, use `assert_raises` as near to the code that raises as possible.
+Other block based assertions (e.g. `assert_difference`) can be used, as long as `assert_raises` is inside their block.
+
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------
+ContactsControllerTest: test_should_destroy_contact
+---------------------------------------------------
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mContact Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+Started DELETE "/contacts/980190962" for 127.0.0.1 at 2023-07-16 21:51:04 +0200
+ContactsControllerTest - test_should_destroy_contact: NoMethodError raised.
+If you expected this exception, use `assert_raises` as near to the code that raises as possible.
+Other block based assertions (e.g. `assert_difference`) can be used, as long as `assert_raises` is inside their block.
+
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------
+ContactsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/contacts" for 127.0.0.1 at 2023-07-16 21:51:04 +0200
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+ContactsControllerTest: test_should_show_contact
+------------------------------------------------
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/contacts/980190962" for 127.0.0.1 at 2023-07-16 21:51:04 +0200
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------------------------
+ContactsControllerTest: test_should_not_create_contact_with_invalid_attributes
+------------------------------------------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mContact Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+Started POST "/contacts" for 127.0.0.1 at 2023-07-16 21:51:04 +0200
+ContactsControllerTest - test_should_not_create_contact_with_invalid_attributes: NoMethodError raised.
+If you expected this exception, use `assert_raises` as near to the code that raises as possible.
+Other block based assertions (e.g. `assert_difference`) can be used, as long as `assert_raises` is inside their block.
+
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------
+ContactsControllerTest: test_should_get_edit
+--------------------------------------------
+  [1m[36mContact Load (0.5ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/contacts/980190962/edit" for 127.0.0.1 at 2023-07-16 21:51:04 +0200
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+ContactsControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/contacts/new" for 127.0.0.1 at 2023-07-16 21:51:04 +0200
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+ContactsControllerTest: test_should_update_contact
+--------------------------------------------------
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started PATCH "/contacts/980190962" for 127.0.0.1 at 2023-07-16 21:51:04 +0200
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------------------------
+ContactsControllerTest: test_should_not_update_contact_with_invalid_attributes
+------------------------------------------------------------------------------
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started PATCH "/contacts/980190962" for 127.0.0.1 at 2023-07-16 21:51:04 +0200
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (1.0ms)[0m  [1m[31mDELETE FROM "contacts";
+INSERT INTO "contacts" ("id", "first_name", "last_name", "phone_number", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', '2023-07-16 19:53:27.583203', '2023-07-16 19:53:27.583203');
+INSERT INTO "contacts" ("id", "first_name", "last_name", "phone_number", "created_at", "updated_at") VALUES (298486374, 'MyString', 'MyString', 'MyString', '2023-07-16 19:53:27.583203', '2023-07-16 19:53:27.583203')[0m
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_key_check[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------------------------
+ContactsControllerTest: test_should_not_update_contact_with_invalid_attributes
+------------------------------------------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started PATCH "/contacts/980190962" for 127.0.0.1 at 2023-07-16 21:53:27 +0200
+Processing by ContactsController#update as HTML
+  Parameters: {"contact"=>{"first_name"=>"", "last_name"=>"", "phone_number"=>""}, "id"=>"980190962"}
+  [1m[36mContact Load (0.1ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering contacts/edit.html.erb within layouts/application
+  Rendered contacts/_form.html.erb (Duration: 9.8ms | Allocations: 4332)
+  Rendered contacts/edit.html.erb within layouts/application (Duration: 13.9ms | Allocations: 5009)
+  Rendered layout layouts/application.html.erb (Duration: 111.9ms | Allocations: 41366)
+Completed 422 Unprocessable Entity in 149ms (Views: 137.5ms | ActiveRecord: 0.1ms | Allocations: 46617)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------------------------
+ContactsControllerTest: test_should_not_create_contact_with_invalid_attributes
+------------------------------------------------------------------------------
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mContact Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+Started POST "/contacts" for 127.0.0.1 at 2023-07-16 21:53:28 +0200
+Processing by ContactsController#create as HTML
+  Parameters: {"contact"=>{"first_name"=>"", "last_name"=>"", "phone_number"=>""}}
+  Rendering layout layouts/application.html.erb
+  Rendering contacts/new.html.erb within layouts/application
+  Rendered contacts/_form.html.erb (Duration: 3.9ms | Allocations: 2681)
+  Rendered contacts/new.html.erb within layouts/application (Duration: 5.0ms | Allocations: 2946)
+  Rendered layout layouts/application.html.erb (Duration: 6.1ms | Allocations: 4452)
+Completed 422 Unprocessable Entity in 8ms (Views: 7.3ms | ActiveRecord: 0.0ms | Allocations: 5055)
+  [1m[36mCACHE Contact Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+ContactsControllerTest: test_should_show_contact
+------------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/contacts/980190962" for 127.0.0.1 at 2023-07-16 21:53:28 +0200
+Processing by ContactsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mContact Load (0.0ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering contacts/show.html.erb within layouts/application
+  Rendered contacts/_contact_show.html.erb (Duration: 1.3ms | Allocations: 668)
+  Rendered contacts/show.html.erb within layouts/application (Duration: 3.8ms | Allocations: 1001)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | Allocations: 2442)
+Completed 200 OK in 8ms (Views: 5.7ms | ActiveRecord: 0.0ms | Allocations: 2867)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------
+ContactsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/contacts" for 127.0.0.1 at 2023-07-16 21:53:28 +0200
+Processing by ContactsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contacts/index.html.erb within layouts/application
+  [1m[36mContact Load (0.1ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  Rendered contacts/_contact.html.erb (Duration: 1.4ms | Allocations: 428)
+  Rendered contacts/_contact.html.erb (Duration: 0.1ms | Allocations: 150)
+  Rendered contacts/index.html.erb within layouts/application (Duration: 7.4ms | Allocations: 1700)
+  Rendered layout layouts/application.html.erb (Duration: 8.7ms | Allocations: 3141)
+Completed 200 OK in 11ms (Views: 9.0ms | ActiveRecord: 0.1ms | Allocations: 3541)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------
+ContactsControllerTest: test_should_destroy_contact
+---------------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mContact Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+Started DELETE "/contacts/980190962" for 127.0.0.1 at 2023-07-16 21:53:28 +0200
+Processing by ContactsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mContact Load (0.1ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mContact Destroy (0.8ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = ?[0m  [["id", 980190962]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/contacts
+Completed 302 Found in 3ms (ActiveRecord: 0.9ms | Allocations: 721)
+  [1m[36mContact Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------
+ContactsControllerTest: test_should_get_edit
+--------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/contacts/980190962/edit" for 127.0.0.1 at 2023-07-16 21:53:28 +0200
+Processing by ContactsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mContact Load (0.0ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering contacts/edit.html.erb within layouts/application
+  Rendered contacts/_form.html.erb (Duration: 0.9ms | Allocations: 997)
+  Rendered contacts/edit.html.erb within layouts/application (Duration: 1.1ms | Allocations: 1119)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 2625)
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.0ms | Allocations: 2956)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+ContactsControllerTest: test_should_create_contact
+--------------------------------------------------
+  [1m[36mContact Load (0.1ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mContact Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+Started POST "/contacts" for 127.0.0.1 at 2023-07-16 21:53:28 +0200
+Processing by ContactsController#create as HTML
+  Parameters: {"contact"=>{"first_name"=>"MyString", "last_name"=>"MyString", "phone_number"=>"MyString"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mContact Create (1.0ms)[0m  [1m[32mINSERT INTO "contacts" ("first_name", "last_name", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["first_name", "MyString"], ["last_name", "MyString"], ["phone_number", "MyString"], ["created_at", "2023-07-16 19:53:28.145720"], ["updated_at", "2023-07-16 19:53:28.145720"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/contacts
+Completed 302 Found in 4ms (ActiveRecord: 1.1ms | Allocations: 933)
+  [1m[36mContact Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+ContactsControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/contacts/new" for 127.0.0.1 at 2023-07-16 21:53:28 +0200
+Processing by ContactsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contacts/new.html.erb within layouts/application
+  Rendered contacts/_form.html.erb (Duration: 1.0ms | Allocations: 906)
+  Rendered contacts/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 992)
+  Rendered layout layouts/application.html.erb (Duration: 2.2ms | Allocations: 2507)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.0ms | Allocations: 2745)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+ContactsControllerTest: test_should_update_contact
+--------------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started PATCH "/contacts/980190962" for 127.0.0.1 at 2023-07-16 21:53:28 +0200
+Processing by ContactsController#update as HTML
+  Parameters: {"contact"=>{"first_name"=>"MyString", "last_name"=>"MyString", "phone_number"=>"MyString"}, "id"=>"980190962"}
+  [1m[36mContact Load (0.0ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Redirected to http://www.example.com/contacts
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 614)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (1.0ms)[0m  [1m[31mDELETE FROM "contacts";
+INSERT INTO "contacts" ("id", "first_name", "last_name", "phone_number", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', '2023-07-16 19:57:04.082844', '2023-07-16 19:57:04.082844');
+INSERT INTO "contacts" ("id", "first_name", "last_name", "phone_number", "created_at", "updated_at") VALUES (298486374, 'MyString', 'MyString', 'MyString', '2023-07-16 19:57:04.082844', '2023-07-16 19:57:04.082844')[0m
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_key_check[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------------------------
+ContactsControllerTest: test_should_not_update_contact_with_invalid_attributes
+------------------------------------------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started PATCH "/contacts/980190962" for 127.0.0.1 at 2023-07-16 21:57:04 +0200
+Processing by ContactsController#update as HTML
+  Parameters: {"contact"=>{"first_name"=>"", "last_name"=>"", "phone_number"=>""}, "id"=>"980190962"}
+  [1m[36mContact Load (0.1ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering contacts/edit.html.erb within layouts/application
+  Rendered contacts/_form.html.erb (Duration: 9.3ms | Allocations: 4332)
+  Rendered contacts/edit.html.erb within layouts/application (Duration: 13.2ms | Allocations: 5009)
+  Rendered layout layouts/application.html.erb (Duration: 113.1ms | Allocations: 41423)
+Completed 422 Unprocessable Entity in 151ms (Views: 139.6ms | ActiveRecord: 0.1ms | Allocations: 46674)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------------------------
+ContactsControllerTest: test_should_create_contact_without_last_name
+--------------------------------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mContact Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+Started POST "/contacts" for 127.0.0.1 at 2023-07-16 21:57:04 +0200
+Processing by ContactsController#create as HTML
+  Parameters: {"contact"=>{"first_name"=>"MyString", "last_name"=>"", "phone_number"=>"MyString"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mContact Create (1.2ms)[0m  [1m[32mINSERT INTO "contacts" ("first_name", "last_name", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["first_name", "MyString"], ["last_name", ""], ["phone_number", "MyString"], ["created_at", "2023-07-16 19:57:04.592639"], ["updated_at", "2023-07-16 19:57:04.592639"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/contacts
+Completed 302 Found in 5ms (ActiveRecord: 1.4ms | Allocations: 1094)
+  [1m[36mContact Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+ContactsControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/contacts/new" for 127.0.0.1 at 2023-07-16 21:57:04 +0200
+Processing by ContactsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contacts/new.html.erb within layouts/application
+  Rendered contacts/_form.html.erb (Duration: 1.0ms | Allocations: 935)
+  Rendered contacts/new.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1200)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | Allocations: 2715)
+Completed 200 OK in 7ms (Views: 4.7ms | ActiveRecord: 0.0ms | Allocations: 3022)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+ContactsControllerTest: test_should_show_contact
+------------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/contacts/980190962" for 127.0.0.1 at 2023-07-16 21:57:04 +0200
+Processing by ContactsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mContact Load (0.0ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering contacts/show.html.erb within layouts/application
+  Rendered contacts/_contact_show.html.erb (Duration: 1.5ms | Allocations: 665)
+  Rendered contacts/show.html.erb within layouts/application (Duration: 4.2ms | Allocations: 984)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 2425)
+Completed 200 OK in 7ms (Views: 5.6ms | ActiveRecord: 0.0ms | Allocations: 2837)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------------------------
+ContactsControllerTest: test_should_update_contact_without_last_name
+--------------------------------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started PATCH "/contacts/980190962" for 127.0.0.1 at 2023-07-16 21:57:04 +0200
+Processing by ContactsController#update as HTML
+  Parameters: {"contact"=>{"first_name"=>"MyString", "last_name"=>"", "phone_number"=>"MyString"}, "id"=>"980190962"}
+  [1m[36mContact Load (0.1ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mContact Update (0.8ms)[0m  [1m[33mUPDATE "contacts" SET "last_name" = ?, "updated_at" = ? WHERE "contacts"."id" = ?[0m  [["last_name", ""], ["updated_at", "2023-07-16 19:57:04.633331"], ["id", 980190962]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/contacts
+Completed 302 Found in 4ms (ActiveRecord: 1.0ms | Allocations: 979)
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------
+ContactsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/contacts" for 127.0.0.1 at 2023-07-16 21:57:04 +0200
+Processing by ContactsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contacts/index.html.erb within layouts/application
+  [1m[36mContact Load (0.1ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  Rendered contacts/_contact.html.erb (Duration: 2.4ms | Allocations: 428)
+  Rendered contacts/_contact.html.erb (Duration: 0.2ms | Allocations: 150)
+  Rendered contacts/index.html.erb within layouts/application (Duration: 11.0ms | Allocations: 1700)
+  Rendered layout layouts/application.html.erb (Duration: 12.2ms | Allocations: 3141)
+Completed 200 OK in 15ms (Views: 12.4ms | ActiveRecord: 0.1ms | Allocations: 3537)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+ContactsControllerTest: test_should_create_contact
+--------------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mContact Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+Started POST "/contacts" for 127.0.0.1 at 2023-07-16 21:57:04 +0200
+Processing by ContactsController#create as HTML
+  Parameters: {"contact"=>{"first_name"=>"MyString", "last_name"=>"MyString", "phone_number"=>"MyString"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mContact Create (0.9ms)[0m  [1m[32mINSERT INTO "contacts" ("first_name", "last_name", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["first_name", "MyString"], ["last_name", "MyString"], ["phone_number", "MyString"], ["created_at", "2023-07-16 19:57:04.667102"], ["updated_at", "2023-07-16 19:57:04.667102"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/contacts
+Completed 302 Found in 3ms (ActiveRecord: 1.1ms | Allocations: 683)
+  [1m[36mContact Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------------------------
+ContactsControllerTest: test_should_not_create_contact_with_invalid_attributes
+------------------------------------------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mContact Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+Started POST "/contacts" for 127.0.0.1 at 2023-07-16 21:57:04 +0200
+Processing by ContactsController#create as HTML
+  Parameters: {"contact"=>{"first_name"=>"", "last_name"=>"", "phone_number"=>""}}
+  Rendering layout layouts/application.html.erb
+  Rendering contacts/new.html.erb within layouts/application
+  Rendered contacts/_form.html.erb (Duration: 3.7ms | Allocations: 2657)
+  Rendered contacts/new.html.erb within layouts/application (Duration: 3.9ms | Allocations: 2743)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | Allocations: 4250)
+Completed 422 Unprocessable Entity in 6ms (Views: 5.2ms | ActiveRecord: 0.0ms | Allocations: 4749)
+  [1m[36mCACHE Contact Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+ContactsControllerTest: test_should_update_contact
+--------------------------------------------------
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started PATCH "/contacts/980190962" for 127.0.0.1 at 2023-07-16 21:57:04 +0200
+Processing by ContactsController#update as HTML
+  Parameters: {"contact"=>{"first_name"=>"MyString", "last_name"=>"MyString", "phone_number"=>"MyString"}, "id"=>"980190962"}
+  [1m[36mContact Load (0.0ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Redirected to http://www.example.com/contacts
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 549)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------
+ContactsControllerTest: test_should_get_edit
+--------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/contacts/980190962/edit" for 127.0.0.1 at 2023-07-16 21:57:04 +0200
+Processing by ContactsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mContact Load (0.1ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering contacts/edit.html.erb within layouts/application
+  Rendered contacts/_form.html.erb (Duration: 1.0ms | Allocations: 992)
+  Rendered contacts/edit.html.erb within layouts/application (Duration: 1.2ms | Allocations: 1114)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | Allocations: 2620)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.1ms | Allocations: 2951)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------
+ContactsControllerTest: test_should_destroy_contact
+---------------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mContact Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+Started DELETE "/contacts/980190962" for 127.0.0.1 at 2023-07-16 21:57:04 +0200
+Processing by ContactsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mContact Load (0.0ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mContact Destroy (0.7ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = ?[0m  [["id", 980190962]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/contacts
+Completed 302 Found in 2ms (ActiveRecord: 0.8ms | Allocations: 596)
+  [1m[36mContact Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.8ms)[0m  [1m[31mDELETE FROM "contacts";
+INSERT INTO "contacts" ("id", "first_name", "last_name", "phone_number", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', '2023-07-16 19:57:44.984757', '2023-07-16 19:57:44.984757');
+INSERT INTO "contacts" ("id", "first_name", "last_name", "phone_number", "created_at", "updated_at") VALUES (298486374, 'MyString', 'MyString', 'MyString', '2023-07-16 19:57:44.984757', '2023-07-16 19:57:44.984757')[0m
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_key_check[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+ContactsControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/contacts/new" for 127.0.0.1 at 2023-07-16 21:57:45 +0200
+Processing by ContactsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contacts/new.html.erb within layouts/application
+  Rendered contacts/_form.html.erb (Duration: 7.7ms | Allocations: 2435)
+  Rendered contacts/new.html.erb within layouts/application (Duration: 11.4ms | Allocations: 3046)
+  Rendered layout layouts/application.html.erb (Duration: 113.9ms | Allocations: 39369)
+Completed 200 OK in 151ms (Views: 124.7ms | ActiveRecord: 0.0ms | Allocations: 43802)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------
+ContactsControllerTest: test_should_destroy_contact
+---------------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mContact Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+Started DELETE "/contacts/980190962" for 127.0.0.1 at 2023-07-16 21:57:45 +0200
+Processing by ContactsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mContact Load (0.0ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mContact Destroy (0.7ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = ?[0m  [["id", 980190962]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/contacts
+Completed 302 Found in 3ms (ActiveRecord: 0.8ms | Allocations: 993)
+  [1m[36mContact Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+ContactsControllerTest: test_should_create_contact
+--------------------------------------------------
+  [1m[36mContact Load (0.1ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mContact Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+Started POST "/contacts" for 127.0.0.1 at 2023-07-16 21:57:45 +0200
+Processing by ContactsController#create as HTML
+  Parameters: {"contact"=>{"first_name"=>"MyString", "last_name"=>"MyString", "phone_number"=>"MyString"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mContact Create (1.0ms)[0m  [1m[32mINSERT INTO "contacts" ("first_name", "last_name", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["first_name", "MyString"], ["last_name", "MyString"], ["phone_number", "MyString"], ["created_at", "2023-07-16 19:57:45.492633"], ["updated_at", "2023-07-16 19:57:45.492633"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/contacts
+Completed 302 Found in 4ms (ActiveRecord: 1.1ms | Allocations: 1100)
+  [1m[36mContact Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+ContactsControllerTest: test_should_update_contact
+--------------------------------------------------
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started PATCH "/contacts/980190962" for 127.0.0.1 at 2023-07-16 21:57:45 +0200
+Processing by ContactsController#update as HTML
+  Parameters: {"contact"=>{"first_name"=>"MyString", "last_name"=>"MyString", "phone_number"=>"MyString"}, "id"=>"980190962"}
+  [1m[36mContact Load (0.0ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Redirected to http://www.example.com/contacts
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 620)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------
+ContactsControllerTest: test_should_get_edit
+--------------------------------------------
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/contacts/980190962/edit" for 127.0.0.1 at 2023-07-16 21:57:45 +0200
+Processing by ContactsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mContact Load (0.0ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering contacts/edit.html.erb within layouts/application
+  Rendered contacts/_form.html.erb (Duration: 1.1ms | Allocations: 1021)
+  Rendered contacts/edit.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1357)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 2864)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.0ms | Allocations: 3254)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------------------------
+ContactsControllerTest: test_should_not_create_contact_with_invalid_attributes
+------------------------------------------------------------------------------
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mContact Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+Started POST "/contacts" for 127.0.0.1 at 2023-07-16 21:57:45 +0200
+Processing by ContactsController#create as HTML
+  Parameters: {"contact"=>{"first_name"=>"", "last_name"=>"", "phone_number"=>""}}
+  Rendering layout layouts/application.html.erb
+  Rendering contacts/new.html.erb within layouts/application
+  Rendered contacts/_form.html.erb (Duration: 2.2ms | Allocations: 2778)
+  Rendered contacts/new.html.erb within layouts/application (Duration: 2.5ms | Allocations: 2864)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | Allocations: 4370)
+Completed 422 Unprocessable Entity in 5ms (Views: 4.4ms | ActiveRecord: 0.0ms | Allocations: 4904)
+  [1m[36mCACHE Contact Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------------------------
+ContactsControllerTest: test_should_not_update_contact_with_invalid_attributes
+------------------------------------------------------------------------------
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started PATCH "/contacts/980190962" for 127.0.0.1 at 2023-07-16 21:57:45 +0200
+Processing by ContactsController#update as HTML
+  Parameters: {"contact"=>{"first_name"=>"", "last_name"=>"", "phone_number"=>""}, "id"=>"980190962"}
+  [1m[36mContact Load (0.0ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering contacts/edit.html.erb within layouts/application
+  Rendered contacts/_form.html.erb (Duration: 2.8ms | Allocations: 2714)
+  Rendered contacts/edit.html.erb within layouts/application (Duration: 3.1ms | Allocations: 2836)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 4342)
+Completed 422 Unprocessable Entity in 6ms (Views: 5.0ms | ActiveRecord: 0.0ms | Allocations: 4920)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+ContactsControllerTest: test_should_show_contact
+------------------------------------------------
+  [1m[36mContact Load (0.1ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/contacts/980190962" for 127.0.0.1 at 2023-07-16 21:57:45 +0200
+Processing by ContactsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mContact Load (0.0ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering contacts/show.html.erb within layouts/application
+  Rendered contacts/_contact_show.html.erb (Duration: 1.5ms | Allocations: 664)
+  Rendered contacts/show.html.erb within layouts/application (Duration: 3.8ms | Allocations: 983)
+  Rendered layout layouts/application.html.erb (Duration: 5.7ms | Allocations: 2424)
+Completed 200 OK in 8ms (Views: 6.3ms | ActiveRecord: 0.0ms | Allocations: 2836)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------------------------
+ContactsControllerTest: test_should_update_contact_without_last_name
+--------------------------------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started PATCH "/contacts/980190962" for 127.0.0.1 at 2023-07-16 21:57:45 +0200
+Processing by ContactsController#update as HTML
+  Parameters: {"contact"=>{"first_name"=>"MyString", "last_name"=>"", "phone_number"=>"MyString"}, "id"=>"980190962"}
+  [1m[36mContact Load (0.0ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mContact Update (0.8ms)[0m  [1m[33mUPDATE "contacts" SET "last_name" = ?, "updated_at" = ? WHERE "contacts"."id" = ?[0m  [["last_name", ""], ["updated_at", "2023-07-16 19:57:45.551381"], ["id", 980190962]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/contacts
+Completed 302 Found in 3ms (ActiveRecord: 0.9ms | Allocations: 882)
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------
+ContactsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/contacts" for 127.0.0.1 at 2023-07-16 21:57:45 +0200
+Processing by ContactsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contacts/index.html.erb within layouts/application
+  [1m[36mContact Load (0.1ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  Rendered contacts/_contact.html.erb (Duration: 1.3ms | Allocations: 428)
+  Rendered contacts/_contact.html.erb (Duration: 0.1ms | Allocations: 150)
+  Rendered contacts/index.html.erb within layouts/application (Duration: 6.9ms | Allocations: 1699)
+  Rendered layout layouts/application.html.erb (Duration: 7.9ms | Allocations: 3140)
+Completed 200 OK in 11ms (Views: 8.3ms | ActiveRecord: 0.1ms | Allocations: 3536)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------------------------
+ContactsControllerTest: test_should_create_contact_without_last_name
+--------------------------------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mContact Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+Started POST "/contacts" for 127.0.0.1 at 2023-07-16 21:57:45 +0200
+Processing by ContactsController#create as HTML
+  Parameters: {"contact"=>{"first_name"=>"MyString", "last_name"=>"", "phone_number"=>"MyString"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mContact Create (1.0ms)[0m  [1m[32mINSERT INTO "contacts" ("first_name", "last_name", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["first_name", "MyString"], ["last_name", ""], ["phone_number", "MyString"], ["created_at", "2023-07-16 19:57:45.575450"], ["updated_at", "2023-07-16 19:57:45.575450"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/contacts
+Completed 302 Found in 3ms (ActiveRecord: 1.2ms | Allocations: 635)
+  [1m[36mContact Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (2.0ms)[0m  [1m[31mDELETE FROM "contacts";
+INSERT INTO "contacts" ("id", "first_name", "last_name", "phone_number", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 'MyString', '2023-07-16 19:58:38.962819', '2023-07-16 19:58:38.962819');
+INSERT INTO "contacts" ("id", "first_name", "last_name", "phone_number", "created_at", "updated_at") VALUES (298486374, 'MyString', 'MyString', 'MyString', '2023-07-16 19:58:38.962819', '2023-07-16 19:58:38.962819')[0m
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_key_check[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+ContactsControllerTest: test_should_update_contact
+--------------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started PATCH "/contacts/980190962" for 127.0.0.1 at 2023-07-16 21:58:39 +0200
+Processing by ContactsController#update as HTML
+  Parameters: {"contact"=>{"first_name"=>"MyString", "last_name"=>"MyString", "phone_number"=>"MyString"}, "id"=>"980190962"}
+  [1m[36mContact Load (0.1ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Redirected to http://www.example.com/contacts
+Completed 302 Found in 15ms (ActiveRecord: 0.1ms | Allocations: 2844)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------------------------
+ContactsControllerTest: test_should_update_contact_without_last_name
+--------------------------------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started PATCH "/contacts/980190962" for 127.0.0.1 at 2023-07-16 21:58:39 +0200
+Processing by ContactsController#update as HTML
+  Parameters: {"contact"=>{"first_name"=>"MyString", "last_name"=>"", "phone_number"=>"MyString"}, "id"=>"980190962"}
+  [1m[36mContact Load (0.1ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mContact Update (1.5ms)[0m  [1m[33mUPDATE "contacts" SET "last_name" = ?, "updated_at" = ? WHERE "contacts"."id" = ?[0m  [["last_name", ""], ["updated_at", "2023-07-16 19:58:39.326993"], ["id", 980190962]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/contacts
+Completed 302 Found in 5ms (ActiveRecord: 1.7ms | Allocations: 1006)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+ContactsControllerTest: test_should_create_contact
+--------------------------------------------------
+  [1m[36mContact Load (0.4ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mContact Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+Started POST "/contacts" for 127.0.0.1 at 2023-07-16 21:58:39 +0200
+Processing by ContactsController#create as HTML
+  Parameters: {"contact"=>{"first_name"=>"MyString", "last_name"=>"MyString", "phone_number"=>"MyString"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mContact Create (1.0ms)[0m  [1m[32mINSERT INTO "contacts" ("first_name", "last_name", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["first_name", "MyString"], ["last_name", "MyString"], ["phone_number", "MyString"], ["created_at", "2023-07-16 19:58:39.339493"], ["updated_at", "2023-07-16 19:58:39.339493"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/contacts
+Completed 302 Found in 5ms (ActiveRecord: 1.1ms | Allocations: 780)
+  [1m[36mContact Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------------------------
+ContactsControllerTest: test_should_not_update_contact_with_invalid_attributes
+------------------------------------------------------------------------------
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started PATCH "/contacts/980190962" for 127.0.0.1 at 2023-07-16 21:58:39 +0200
+Processing by ContactsController#update as HTML
+  Parameters: {"contact"=>{"first_name"=>"", "last_name"=>"", "phone_number"=>""}, "id"=>"980190962"}
+  [1m[36mContact Load (0.1ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering contacts/edit.html.erb within layouts/application
+  Rendered contacts/_form.html.erb (Duration: 9.9ms | Allocations: 4276)
+  Rendered contacts/edit.html.erb within layouts/application (Duration: 14.3ms | Allocations: 4949)
+  Rendered layout layouts/application.html.erb (Duration: 117.7ms | Allocations: 41049)
+Completed 422 Unprocessable Entity in 149ms (Views: 147.5ms | ActiveRecord: 0.1ms | Allocations: 44476)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+ContactsControllerTest: test_should_show_contact
+------------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/contacts/980190962" for 127.0.0.1 at 2023-07-16 21:58:39 +0200
+Processing by ContactsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mContact Load (0.1ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering contacts/show.html.erb within layouts/application
+  Rendered contacts/_contact_show.html.erb (Duration: 1.1ms | Allocations: 664)
+  Rendered contacts/show.html.erb within layouts/application (Duration: 2.9ms | Allocations: 986)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | Allocations: 2427)
+Completed 200 OK in 8ms (Views: 4.3ms | ActiveRecord: 0.1ms | Allocations: 2852)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------
+ContactsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/contacts" for 127.0.0.1 at 2023-07-16 21:58:39 +0200
+Processing by ContactsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contacts/index.html.erb within layouts/application
+  [1m[36mContact Load (0.1ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  Rendered contacts/_contact.html.erb (Duration: 1.5ms | Allocations: 428)
+  Rendered contacts/_contact.html.erb (Duration: 0.2ms | Allocations: 150)
+  Rendered contacts/index.html.erb within layouts/application (Duration: 7.5ms | Allocations: 1700)
+  Rendered layout layouts/application.html.erb (Duration: 8.7ms | Allocations: 3141)
+Completed 200 OK in 11ms (Views: 8.8ms | ActiveRecord: 0.1ms | Allocations: 3541)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------------------------
+ContactsControllerTest: test_should_not_create_contact_with_invalid_attributes
+------------------------------------------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mContact Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+Started POST "/contacts" for 127.0.0.1 at 2023-07-16 21:58:39 +0200
+Processing by ContactsController#create as HTML
+  Parameters: {"contact"=>{"first_name"=>"", "last_name"=>"", "phone_number"=>""}}
+  Rendering layout layouts/application.html.erb
+  Rendering contacts/new.html.erb within layouts/application
+  Rendered contacts/_form.html.erb (Duration: 2.7ms | Allocations: 2680)
+  Rendered contacts/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 2943)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 4449)
+Completed 422 Unprocessable Entity in 8ms (Views: 7.6ms | ActiveRecord: 0.0ms | Allocations: 5005)
+  [1m[36mCACHE Contact Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------
+ContactsControllerTest: test_should_destroy_contact
+---------------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mContact Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+Started DELETE "/contacts/980190962" for 127.0.0.1 at 2023-07-16 21:58:39 +0200
+Processing by ContactsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mContact Load (0.1ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mContact Destroy (1.0ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = ?[0m  [["id", 980190962]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/contacts
+Completed 302 Found in 3ms (ActiveRecord: 1.2ms | Allocations: 596)
+  [1m[36mContact Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------------------------
+ContactsControllerTest: test_should_create_contact_without_last_name
+--------------------------------------------------------------------
+  [1m[36mContact Load (0.1ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mContact Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+Started POST "/contacts" for 127.0.0.1 at 2023-07-16 21:58:39 +0200
+Processing by ContactsController#create as HTML
+  Parameters: {"contact"=>{"first_name"=>"MyString", "last_name"=>"", "phone_number"=>"MyString"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mContact Create (0.8ms)[0m  [1m[32mINSERT INTO "contacts" ("first_name", "last_name", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["first_name", "MyString"], ["last_name", ""], ["phone_number", "MyString"], ["created_at", "2023-07-16 19:58:39.557077"], ["updated_at", "2023-07-16 19:58:39.557077"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/contacts
+Completed 302 Found in 3ms (ActiveRecord: 0.9ms | Allocations: 683)
+  [1m[36mContact Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contacts"[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+ContactsControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[36mContact Load (0.4ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/contacts/new" for 127.0.0.1 at 2023-07-16 21:58:39 +0200
+Processing by ContactsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contacts/new.html.erb within layouts/application
+  Rendered contacts/_form.html.erb (Duration: 0.9ms | Allocations: 910)
+  Rendered contacts/new.html.erb within layouts/application (Duration: 1.1ms | Allocations: 996)
+  Rendered layout layouts/application.html.erb (Duration: 2.1ms | Allocations: 2511)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.0ms | Allocations: 2749)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------
+ContactsControllerTest: test_should_get_edit
+--------------------------------------------
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/contacts/980190962/edit" for 127.0.0.1 at 2023-07-16 21:58:39 +0200
+Processing by ContactsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mContact Load (0.1ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering contacts/edit.html.erb within layouts/application
+  Rendered contacts/_form.html.erb (Duration: 2.3ms | Allocations: 992)
+  Rendered contacts/edit.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1114)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | Allocations: 2620)
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.1ms | Allocations: 2951)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m

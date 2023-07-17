@@ -1,0 +1,11 @@
+<h1 class="c-h1-contacts">New contact</h1>
+
+<%= render "form", contact: @contact %>
+
+<br>
+
+<div>
+  <%= link_to contacts_path, class: "btn btn-back" do %>
+    <span class="fas fa-arrow-left"></span> Back
+  <% end %>
+</div>

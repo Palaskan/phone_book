@@ -1,0 +1,19 @@
+<div id="<%= dom_id contact %>">
+  <div class="c-contact-info">
+    <div class="c-contact-name">
+      <h3>
+        <%= link_to contact_path(contact) do %>
+          <%= contact.first_name %> <%= contact.last_name %>
+        <% end %>
+      </h3>
+    </div>
+    <div class="c-contact-number">
+      <p><span class="fa-solid fa-phone"></span><%= contact.phone_number %></p>
+    </div>
+  </div>
+  <div class="c-contact-delete">
+    <%= link_to "#", method: :delete, class: "btn btn-danger delete-link", data: { toggle: 'modal', target: '#confirmModal', contact_id: contact.id } do %>
+    <span class="fas fa-trash-can"></span>
+    <% end %>
+  </div>
+</div>
